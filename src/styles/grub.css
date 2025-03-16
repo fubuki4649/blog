@@ -1,0 +1,87 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+:root {
+    --background: #18181B;
+    --content: #D4D4D8;
+}
+
+@font-face {
+    font-family: 'CommitMono';
+    src: url('/fonts/commit-mono-400-regular.otf') format('otf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'CommitMono', monospace;
+    height: 100%;
+    width: 80%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--background);
+    color: var(--content);
+    background-size: 100% 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+a {
+    color: var(--content);
+}
+
+.title {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    border: var(--content) solid;
+    height: 500px;
+    padding: 15px 5px;
+
+    li {
+        padding: 1px 25px;
+        .bullet {
+            display: inline-block;
+            font-weight: bold;
+        }
+        a {
+            font-weight: 500;
+            display: inherit;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    li:hover {
+        background-color: var(--content);
+        padding-left: 3px;
+        .bullet {
+            display: inline-block;
+            width: 18px;
+            padding-right: 4px;
+        }
+        a {
+            color: var(--background);
+        }
+    }
+}
+
+.description {
+    padding: 10px 50px 50px;
+}
