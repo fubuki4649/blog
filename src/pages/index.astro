@@ -1,50 +1,60 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import '../styles/grub.css';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h3>🧑‍🚀 Hello, Astronaut!</h3>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<head>
+	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+<p class="title">GNU fubuki 2.22</p>
+
+<ul>
+	{
+		posts.map((post) => (
+			<li>
+				<a href={`/blog/${post.id}/`}>
+					<span class="bullet">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 0 80 100" style="vertical-align: -0.26em;">
+								<path d="M55 15 L55 85 M30 32 L80 68 M30 68 L80 32" stroke="currentColor" stroke-width="8" stroke-linecap="square" fill="none"/>
+						</svg>
+					</span><span class="entryText">{post.data.title}
+						({
+							post.data.pubDate.toLocaleDateString('en-us', {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric',
+							})
+						})
+					</span>
+				</a>
+			</li>
+		))
+	}
+	<li>
+		<a href={`/blog`}>
+			<span class="bullet">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 0 80 100" style="vertical-align: -0.26em;">
+					<path d="M55 15 L55 85 M30 32 L80 68 M30 68 L80 32" stroke="currentColor" stroke-width="8" stroke-linecap="square" fill="none"/>
+				</svg>
+			</span><span class="entryText">More Posts ...</span>
+		</a>
+	</li>
+</ul>
+
+<p class="description">
+	Welcome to my blog! I'm a CS student from Waterloo, Canada. I build things in mostly kotlin/typescript/rust am always experimenting with new things that catch my interest.
+	<br><br>
+	If you are interested in checking out my projects, here is my <a href="https://github.com/fubuki4649" target="_blank">github</a> and <a href="https://x.com/fubukidev" target="_blank">x</a>
+</p>
+
+</body>
 </html>

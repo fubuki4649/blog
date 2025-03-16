@@ -24,7 +24,7 @@ html {
 body {
     font-family: 'CommitMono', monospace;
     height: 100%;
-    width: 80%;
+    width: 75%;
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
@@ -35,7 +35,6 @@ body {
     background-size: 100% 600px;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    font-size: 20px;
     line-height: 1.7;
 }
 
@@ -44,6 +43,7 @@ a {
 }
 
 .title {
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -60,6 +60,7 @@ ul {
             font-weight: bold;
         }
         a {
+            text-decoration: none;
             font-weight: 500;
             display: inherit;
             overflow: hidden;
@@ -73,8 +74,9 @@ ul {
         padding-left: 3px;
         .bullet {
             display: inline-block;
-            width: 18px;
-            padding-right: 4px;
+            width: 16px;
+            padding-left: 1px;
+            padding-right: 5px;
         }
         a {
             color: var(--background);
