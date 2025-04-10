@@ -19,9 +19,9 @@ const posts = (await getCollection('blog')).sort(
 
 <ul>
 	{
-		posts.map((post) => (
-			<li>
-				<a href={`/blog/${post.id}/`}>
+		posts.map((post, index) => (
+			<li class="item" data-index={index}>
+				<a class="item-link" href={`/blog/${post.id}/`}>
 					<span class="bullet">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 0 80 100" style="vertical-align: -0.26em;">
 								<path d="M55 15 L55 85 M30 32 L80 68 M30 68 L80 32" stroke="currentColor" stroke-width="8" stroke-linecap="square" fill="none"/>
@@ -39,8 +39,8 @@ const posts = (await getCollection('blog')).sort(
 			</li>
 		))
 	}
-	<li>
-		<a href={`/blog`}>
+	<li class="item">
+		<a class="item-link" href={`/blog`}>
 			<span class="bullet">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 0 80 100" style="vertical-align: -0.26em;">
 					<path d="M55 15 L55 85 M30 32 L80 68 M30 68 L80 32" stroke="currentColor" stroke-width="8" stroke-linecap="square" fill="none"/>
@@ -58,3 +58,64 @@ const posts = (await getCollection('blog')).sort(
 
 </body>
 </html>
+
+<script>
+
+	// Get DOM elements
+	const items = document.querySelectorAll('.item');
+	const links = document.querySelectorAll('.item-link');
+
+	// Track current position
+	let currentPosition = 0;
+	const totalItems = items.length;
+
+	// Function to update highlight
+	function updateHighlight() {
+		items.forEach(item => item.classList.remove('selected'));
+		items[currentPosition].classList.add('selected');
+	}
+
+	// Function to go to linked item
+	function navigateToCurrentItem() {
+		const currentLink = links[currentPosition];
+		if (currentLink) {
+			window.location.href = currentLink.getAttribute('href') as string;
+		}
+	}
+
+	// Set keyboard event listeners
+	document.addEventListener('keydown', function(event) {
+		if(event.key === 'ArrowUp') {
+			if (currentPosition > 0) {
+				currentPosition--;
+				updateHighlight();
+			}
+		} else if(event.key === 'ArrowDown') {
+			if (currentPosition < totalItems - 1) {
+				currentPosition++;
+				updateHighlight();
+			}
+		} else if(event.key === 'Enter') {
+			navigateToCurrentItem()
+		}
+	});
+
+	// Set hover listeners
+	items.forEach((item, index) => {
+		// Select on hover
+		item.addEventListener('mouseenter', () => {
+			currentPosition = index;
+			updateHighlight();
+		});
+		// Click too, why not
+		item.addEventListener('click', () => {
+			currentPosition = index;
+			updateHighlight();
+		});
+	});
+
+
+	// Initialize
+	updateHighlight();
+
+</script>

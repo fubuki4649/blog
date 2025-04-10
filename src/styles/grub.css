@@ -69,7 +69,7 @@ ul {
         }
     }
 
-    li:hover {
+    li.selected {
         background-color: var(--content);
         padding-left: 3px;
         .bullet {
