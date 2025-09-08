@@ -88,17 +88,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           width: 1020px;
           max-width: calc(100% - 2em);
           margin: auto;
-          padding: 1em;
+          padding: 0.5em 1em 1em;
           color: rgb(var(--gray-dark));
 			}
 			.title {
-          margin-bottom: 1em;
-          padding: 1em 0;
+          margin-bottom: 1.5em;
           text-align: center;
           line-height: 1;
 
-          h2 {
-              margin-top: 0.5em;
+          h3 {
+              margin-top: 0;
           }
 			}
 			.date {
@@ -118,12 +117,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title">
-            <h2>{title}</h2>
+            <h3>{title}</h3>
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{

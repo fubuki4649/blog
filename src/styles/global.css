@@ -5,8 +5,9 @@
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+    height: 100vh;
+	--accent: oklch(64.8% 0.2 131.684);
+	--accent-dark: oklch(53.2% 0.157 131.589);
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -31,6 +32,9 @@
 	font-display: swap;
 }
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 	font-family: 'Atkinson', sans-serif;
 	margin: 0;
 	padding: 0;
@@ -44,10 +48,12 @@ body {
 	line-height: 1.5;
 }
 main {
-	width: 720px;
+    flex-grow: 1;
+    height: 100%;
+	width: 1020px;
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 1em;
+	padding: 2em 1em;
 }
 h1,
 h2,
