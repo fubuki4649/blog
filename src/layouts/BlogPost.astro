@@ -71,10 +71,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
+          position: relative;
           width: calc(100% - 2em);
           max-width: 100%;
           margin: 0;
 			}
+      .back-button {
+          position: absolute;
+          top: 1em;
+          left: 1em;
+          background: var(--divider);
+          color: var(--text-secondary);
+          border: none;
+          padding: 4px 12px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 24px;
+          line-height: 32px;
+          opacity: 0.8;
+      }
 			.hero-image {
           width: 100%;
 			}
@@ -82,14 +97,14 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           display: block;
           margin: 0 auto;
           border-radius: 12px;
-          box-shadow: var(--box-shadow);
+          box-shadow: var(--shadow);
 			}
 			.prose {
           width: 1020px;
           max-width: calc(100% - 2em);
           margin: auto;
           padding: 0.5em 1em 1em;
-          color: rgb(var(--gray-dark));
+          color: var(--text-primary);
 			}
 			.title {
           margin-bottom: 1.5em;
@@ -105,7 +120,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           flex-direction: column;
           gap: 0.5em;
           margin-bottom: 1em;
-          color: rgb(var(--gray));
+          color: var(--text-secondary);
 			}
 			.last-updated-on {
 				  font-style: italic;
@@ -116,6 +131,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<body>
 		<Header />
 		<main>
+      <button class="back-button" onclick="window.location.href = '/blog'">← Back</button>
 			<article>
 				<div class="prose">
 					<div class="title">

@@ -18,7 +18,9 @@ const { title, description, image = '/og_preview.png' } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/favicon_dark.svg" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/favicon.svg" /> <!-- fallback -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"

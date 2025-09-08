@@ -21,7 +21,7 @@ const posts = (await getCollection('blog')).sort(
 			display: flex;
 			flex-wrap: wrap;
 			list-style-type: none;
-			margin: 0;
+			margin: 0.5em;
 			padding: 0;
 		}
 		ul li {
@@ -37,24 +37,24 @@ const posts = (await getCollection('blog')).sort(
     ul li:not(:last-child)::after {
         content: "";
         display: block;
-        border-bottom: 1px solid rgb(var(--gray-light));
+        border-bottom: 1px solid var(--divider);
         margin: 1em 0 1.3em;
     }
 		.title {
 			margin: 0;
-			color: rgb(var(--black));
+			color: var(--text-primary);
 			line-height: 1;
 		}
 		.date {
 			margin: 0;
-			color: rgb(var(--gray));
+			color: var(--text-secondary);
 		}
 		ul li a:hover h4,
 		ul li a:hover .date {
 			color: rgb(var(--accent));
 		}
 		ul a:hover img {
-			box-shadow: var(--box-shadow);
+			box-shadow: var(--shadow);
 		}
 		@media (max-width: 720px) {
 			ul {
