@@ -85,5 +85,11 @@ ul {
 }
 
 .description {
-    padding: 10px 50px 50px;
+    padding: 10px 50px;
+}
+
+@media (max-width: 500px) {
+    .description {
+        padding: 10px 0;
+    }
 }

@@ -45,6 +45,7 @@ import { SITE_TITLE } from '../consts';
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+    padding: 0 !important;
 	}
 	nav {
 		display: flex;
@@ -66,8 +67,16 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 	}
 	@media (max-width: 720px) {
+      nav a {
+          padding: 1em 0.5em 0.8em;
+      }
 		.social-links {
 			display: none;
 		}
 	}
+  @media (max-width: 390px) {
+      nav a {
+          padding: 1em 0.25em 0.8em;
+      }
+  }
 </style>
